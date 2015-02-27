@@ -3,18 +3,21 @@
 <head>
   <title>Deck of Cards</title>
   <link type='text/css' rel='stylesheet' href='css/skeleton/css/skeleton.css'>
+  <link href='http://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
   <link type='text/css' rel='stylesheet' href='css/style.css'>
   <link type='text/css' rel='stylesheet' href='css/animate.css'>
 </head>
 <body>
-  <h1>Deck O' Cards!</h1>
-  <button id='shuffle'>Shuffle</button>
-  <button id='sort'>Sort</button>
-  <ul id='deck'>
-  </ul>
-  <ul id='newDeck'>
-  </ul>
-
+  <header>
+    <h1>Deck of Cards</h1>
+  </header>
+  <section id='buttons'>
+    <button id='shuffle'>Shuffle</button>
+    <button id='sort'>Sort</button>
+  </section>
+  <section>
+    <ul id='deck'></ul>
+  </section>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
 
   <script type='text/javascript'>
