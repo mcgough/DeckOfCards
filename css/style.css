@@ -12,6 +12,7 @@ h1 {
   text-shadow: 1px 1px 1px black;
 }
 ul {
+  margin-top: 1em;
   text-align: center;
 }
 li {
@@ -33,6 +34,7 @@ li {
   background-color: red;
   color: white;
   box-shadow: 2px 0 2px white;
+
 }
 #shuffle {
   margin-left: 43em;

@@ -45,8 +45,8 @@
       rand = Math.floor(Math.random() * m--);
       $('li:eq(' + m + ')').
         after($('li:eq(' + rand + ')')).
-        fadeOut(300).
-        fadeIn(300).
+        fadeOut(500).
+        fadeIn(500).
         insertBefore($('li:eq(' + rand + ')'))
       if(m) {
         setTimeout(shuffle, 150, m);
@@ -57,7 +57,7 @@
         if($(this).text() === "A-" + a) {
           $(this).fadeOut().
           insertAfter($('li:last')).
-          fadeIn(200);
+          fadeIn(300);
         }
       });
       for(var i = 2; i <= 10; i++) {
@@ -65,7 +65,7 @@
           if($(this).text() === i + "-" + a) {
             $(this).fadeOut().
             insertAfter($('li:last')).
-            fadeIn(750);
+            fadeIn(600);
           }
         });
       }
