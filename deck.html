@@ -2,12 +2,19 @@
 <html>
 <head>
   <title>Deck of Cards</title>
+  <link type='text/css' rel='stylesheet' href='css/skeleton/css/skeleton.css'>
   <link type='text/css' rel='stylesheet' href='css/style.css'>
+  <link type='text/css' rel='stylesheet' href='css/animate.css'>
 </head>
 <body>
+  <h1>Deck O' Cards!</h1>
+  <button id='shuffle'>Shuffle</button>
+  <button id='sort'>Sort</button>
   <ul id='deck'>
-
   </ul>
+  <ul id='newDeck'>
+  </ul>
+
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
 
   <script type='text/javascript'>
@@ -15,7 +22,7 @@
       this.rank = r;
       this.suit = s;
       this.toHTML = function() {
-        return "<li class='card'>" + this.rank + "-" + this.suit + "</li>";
+        return "<li class='card' >" + this.rank + "-" + this.suit + "</li>";
       }
     }
     function Deck() {
@@ -27,7 +34,7 @@
         $.each(thisDeck.ranks, function() {
           var rank = this;
           var card = new Card(rank, suit);
-          $('#deck').append(card.toHTML());
+          $('#deck').append(card.toHTML()).show().fadeIn(300);
         });
       });
     }
@@ -36,19 +43,59 @@
       rand = Math.floor(Math.random() * m--);
       $('li:eq(' + m + ')').
         after($('li:eq(' + rand + ')')).
+        fadeOut(300).
+        fadeIn(300).
         insertBefore($('li:eq(' + rand + ')'))
       if(m) {
-        setTimeout(shuffle, 50, m);
+        setTimeout(shuffle, 100, m);
       }
+    };
+    var sort = function(a) {
+      $('li').each(function() {
+        if($(this).text() === "A-" + a) {
+          $(this).insertAfter($('li:last'));
+        }
+      });
+      for(var i = 2; i <= 10; i++) {
+        $('li').each(function() {
+          if($(this).text() === i + "-" + a) {
+            $(this).insertAfter($('li:last'));
+          }
+        });
+      }
+      $('li').each(function() {
+        if($(this).text() === "J-" + a) {
+          $(this).insertAfter($('li:last'));
+        }
+      });
+      $('li').each(function() {
+        if($(this).text() === "Q-" + a) {
+          $(this).insertAfter($('li:last'));
+        }
+      });
+      $('li').each(function() {
+        if($(this).text() === "K-" + a) {
+          $(this).insertAfter($('li:last'));
+        }
+      });
     };
     var cardColor = function() {
       $('li:contains("D")').css('color', 'red');
       $('li:contains("H")').css('color', 'red');
     };
-
+    $('#sort').on('click', function (){
+      sort('H');
+      sort('C');
+      sort('D');
+      sort('S');
+    });
+    $('#shuffle').on('click', function(){
+      shuffle($('.cards').length);
+    });
+    $('#deck').hide();
     var deck = new Deck();
     cardColor();
-    shuffle($('.cards').length);
   </script>
 </body>
 </html>
+
