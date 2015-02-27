@@ -1,0 +1,118 @@
+<!doctype>
+<html>
+<head>
+  <title>Deck of Cards</title>
+  <link type='text/css' rel='stylesheet' href='css/skeleton/css/skeleton.css'>
+  <link href='http://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
+  <link type='text/css' rel='stylesheet' href='css/style.css'>
+</head>
+<body>
+  <header>
+    <h1>- Deck <span>of</span> Cards -</h1>
+  </header>
+  <section id='buttons'>
+    <button id='shuffle'>Shuffle</button>
+    <button id='sort'>Sort</button>
+  </section>
+  <section>
+    <ul id='deck'></ul>
+  </section>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+  <script type='text/javascript'>
+    function Card(r, s) {
+      this.rank = r;
+      this.suit = s;
+      this.toHTML = function() {
+        return "<li class='card' >" + this.rank + "-" + this.suit + "</li>";
+      }
+    }
+    function Deck() {
+      var thisDeck = this;
+      this.suits = ['H', 'C', 'D', 'S'];
+      this.ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+      $.each(thisDeck.suits, function() {
+        var suit = this;
+        $.each(thisDeck.ranks, function() {
+          var rank = this;
+          var card = new Card(rank, suit);
+          $('#deck').append(card.toHTML()).show().fadeIn(300);
+        });
+      });
+    }
+    var shuffle = function(m) {
+      var rand, $rand;
+      rand = Math.floor(Math.random() * m--);
+      $('li:eq(' + m + ')').
+        after($('li:eq(' + rand + ')')).
+        fadeOut(300).
+        insertBefore($('li:eq(' + rand + ')')).
+        delay(7000).
+        fadeIn(300)
+      if(m) {
+        setTimeout(shuffle, 150, m);
+      }
+    };
+    var sort = function(a) {
+      $('li').each(function() {
+        if($(this).text() === "A-" + a) {
+          $(this).fadeOut(300).
+          insertAfter($('li:last')).
+          delay(100).
+          fadeIn(900);
+        }
+      });
+      for(var i = 2; i <= 10; i++) {
+        $('li').each(function() {
+          if($(this).text() === i + "-" + a) {
+            $(this).fadeOut(300).
+            insertAfter($('li:last')).
+            delay(1500).
+            fadeIn(900);
+          }
+        });
+      }
+      $('li').each(function() {
+        if($(this).text() === "J-" + a) {
+          $(this).fadeOut(300).
+          insertAfter($('li:last')).
+          delay(2500).
+          fadeIn(900);
+        }
+      });
+      $('li').each(function() {
+        if($(this).text() === "Q-" + a) {
+          $(this).fadeOut(300).
+          insertAfter($('li:last')).
+          delay(3500).
+          fadeIn(900);
+        }
+      });
+      $('li').each(function() {
+        if($(this).text() === "K-" + a) {
+          $(this).fadeOut(300).
+          insertAfter($('li:last')).
+          delay(4500).
+          fadeIn(900);
+        }
+      });
+    };
+    var cardColor = function() {
+      $('li:contains("D")').css('color', 'red');
+      $('li:contains("H")').css('color', 'red');
+    };
+    $('#sort').on('click', function () {
+      sort('H');
+      sort('C');
+      sort('D');
+      sort('S');
+    });
+    $('#shuffle').on('click', function() {
+      shuffle($('.cards').length);
+    });
+    $('#deck').hide();
+    var deck = new Deck();
+    cardColor();
+  </script>
+</body>
+</html>
+
