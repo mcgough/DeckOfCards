@@ -5,11 +5,10 @@
   <link type='text/css' rel='stylesheet' href='css/skeleton/css/skeleton.css'>
   <link href='http://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
   <link type='text/css' rel='stylesheet' href='css/style.css'>
-  <link type='text/css' rel='stylesheet' href='css/animate.css'>
 </head>
 <body>
   <header>
-    <h1>Deck of Cards</h1>
+    <h1>- Deck <span>of</span> Cards -</h1>
   </header>
   <section id='buttons'>
     <button id='shuffle'>Shuffle</button>
@@ -45,9 +44,10 @@
       rand = Math.floor(Math.random() * m--);
       $('li:eq(' + m + ')').
         after($('li:eq(' + rand + ')')).
-        fadeOut(500).
-        fadeIn(500).
-        insertBefore($('li:eq(' + rand + ')'))
+        fadeOut(300).
+        insertBefore($('li:eq(' + rand + ')')).
+        delay(7000).
+        fadeIn(300)
       if(m) {
         setTimeout(shuffle, 150, m);
       }
@@ -55,39 +55,44 @@
     var sort = function(a) {
       $('li').each(function() {
         if($(this).text() === "A-" + a) {
-          $(this).fadeOut().
+          $(this).fadeOut(300).
           insertAfter($('li:last')).
-          fadeIn(300);
+          delay(100).
+          fadeIn(900);
         }
       });
       for(var i = 2; i <= 10; i++) {
         $('li').each(function() {
           if($(this).text() === i + "-" + a) {
-            $(this).fadeOut().
+            $(this).fadeOut(300).
             insertAfter($('li:last')).
-            fadeIn(600);
+            delay(1500).
+            fadeIn(900);
           }
         });
       }
       $('li').each(function() {
         if($(this).text() === "J-" + a) {
-          $(this).fadeOut().
+          $(this).fadeOut(300).
           insertAfter($('li:last')).
-          fadeIn(1100);
+          delay(2500).
+          fadeIn(900);
         }
       });
       $('li').each(function() {
         if($(this).text() === "Q-" + a) {
-          $(this).fadeOut().
+          $(this).fadeOut(300).
           insertAfter($('li:last')).
-          fadeIn(1600);
+          delay(3500).
+          fadeIn(900);
         }
       });
       $('li').each(function() {
         if($(this).text() === "K-" + a) {
-          $(this).fadeOut().
+          $(this).fadeOut(300).
           insertAfter($('li:last')).
-          fadeIn(2000);
+          delay(4500).
+          fadeIn(900);
         }
       });
     };
