@@ -19,7 +19,6 @@
     <ul id='deck'></ul>
   </section>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
-
   <script type='text/javascript'>
     function Card(r, s) {
       this.rank = r;
@@ -50,35 +49,45 @@
         fadeIn(300).
         insertBefore($('li:eq(' + rand + ')'))
       if(m) {
-        setTimeout(shuffle, 100, m);
+        setTimeout(shuffle, 150, m);
       }
     };
     var sort = function(a) {
       $('li').each(function() {
         if($(this).text() === "A-" + a) {
-          $(this).insertAfter($('li:last'));
+          $(this).fadeOut().
+          insertAfter($('li:last')).
+          fadeIn(200);
         }
       });
       for(var i = 2; i <= 10; i++) {
         $('li').each(function() {
           if($(this).text() === i + "-" + a) {
-            $(this).insertAfter($('li:last'));
+            $(this).fadeOut().
+            insertAfter($('li:last')).
+            fadeIn(750);
           }
         });
       }
       $('li').each(function() {
         if($(this).text() === "J-" + a) {
-          $(this).insertAfter($('li:last'));
+          $(this).fadeOut().
+          insertAfter($('li:last')).
+          fadeIn(1100);
         }
       });
       $('li').each(function() {
         if($(this).text() === "Q-" + a) {
-          $(this).insertAfter($('li:last'));
+          $(this).fadeOut().
+          insertAfter($('li:last')).
+          fadeIn(1600);
         }
       });
       $('li').each(function() {
         if($(this).text() === "K-" + a) {
-          $(this).insertAfter($('li:last'));
+          $(this).fadeOut().
+          insertAfter($('li:last')).
+          fadeIn(2000);
         }
       });
     };
@@ -86,13 +95,13 @@
       $('li:contains("D")').css('color', 'red');
       $('li:contains("H")').css('color', 'red');
     };
-    $('#sort').on('click', function (){
+    $('#sort').on('click', function () {
       sort('H');
       sort('C');
       sort('D');
       sort('S');
     });
-    $('#shuffle').on('click', function(){
+    $('#shuffle').on('click', function() {
       shuffle($('.cards').length);
     });
     $('#deck').hide();
