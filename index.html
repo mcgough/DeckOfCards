@@ -12,7 +12,8 @@
   </header>
   <section id='buttons'>
     <button id='shuffle'>Shuffle</button>
-    <button id='sort'>Sort</button>
+    <button id='sort'>My Sort</button>
+    <button id='insert'>Insertion Sort</button>
   </section>
   <section>
     <ul id='deck'></ul>
@@ -39,6 +40,7 @@
         });
       });
     }
+
     var shuffle = function(m) {
       var rand, $rand;
       rand = Math.floor(Math.random() * m--);
@@ -46,12 +48,14 @@
         after($('li:eq(' + rand + ')')).
         fadeOut(300).
         insertBefore($('li:eq(' + rand + ')')).
-        delay(7000).
+        //delay(1000).
         fadeIn(300)
       if(m) {
-        setTimeout(shuffle, 150, m);
+        setTimeout(shuffle, 0, m);
       }
     };
+
+    //My original sort (by suit, then rank)
     var sort = function(a) {
       $('li').each(function() {
         if($(this).text() === "A-" + a) {
@@ -96,10 +100,39 @@
         }
       });
     };
+    //Insertion sort and testing function
+    var test = function() {
+      if($('li:eq(0)').data('name') < $('li:eq(1)').data('name')) {
+        console.log("!!!It does!!!");
+      }else {
+        console.log('It doesnt');
+      }
+    };
+    var insertSort = function() {
+      var length = $('li').length;
+      for(var i = 1; i <= length; i++) {
+        var $temp = $('li:eq(' + i + ')');
+        var j = i - 1;
+        for(; j >= 0 && $('li:eq(' + j + ')').data('name') > $temp.data('name'); --j) {
+          $('li:eq(' + (j + 1)+ ')').fadeOut(50).detach().insertBefore($('li:eq(' + j + ')')).fadeIn(300);
+          console.log('yes');
+        }
+      }
+    };
+
+
+    //Assigns meta-value so I can sort through them efficiently
+    var addValue = function() {
+      for(var i = 0; i <= $('.card').length; i++) {
+        $('li:eq(' + i + ')').data('name', i);
+      }
+    };
+
     var cardColor = function() {
       $('li:contains("D")').css('color', 'red');
       $('li:contains("H")').css('color', 'red');
     };
+
     $('#sort').on('click', function () {
       sort('H');
       sort('C');
@@ -109,9 +142,16 @@
     $('#shuffle').on('click', function() {
       shuffle($('.cards').length);
     });
+    $('#insert').on('click', function(){
+      insertSort();
+    })
+
     $('#deck').hide();
     var deck = new Deck();
     cardColor();
+    addValue();
+    test();
+
   </script>
 </body>
 </html>

@@ -36,6 +36,7 @@ li {
   width: 95%;
   margin: auto;
 }
+#insert,
 #shuffle,
 #sort {
   font-family: 'Cinzel', serif;
@@ -45,10 +46,15 @@ li {
   box-shadow: 0 0 15px white;
   border: none;
 }
+#insert,
 #sort {
-  padding: 0 4em;
+  padding: 0 3em;
   margin-left: 1.5em;
 }
+#insert {
+  padding: 0 1em;
+}
+#insert:hover,
 #shuffle:hover,
 #sort:hover {
 box-shadow: 0 0 50px white;
