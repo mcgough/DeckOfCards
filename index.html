@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Deck of Cards</title>
-  <link type='text/css' rel='stylesheet' href='css/skeleton/css/skeleton.css'>
+  <link type='text/css' rel='stylesheet' href='css/Skeleton/css/skeleton.css'>
   <link href='http://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
   <link type='text/css' rel='stylesheet' href='css/style.css'>
 </head>
@@ -64,6 +64,7 @@
           delay(100).
           fadeIn(900);
         }
+        console.log('no');
       });
       for(var i = 2; i <= 10; i++) {
         $('li').each(function() {
@@ -74,6 +75,7 @@
             fadeIn(900);
           }
         });
+        console.log('no');
       }
       $('li').each(function() {
         if($(this).text() === "J-" + a) {
@@ -82,6 +84,7 @@
           delay(2500).
           fadeIn(900);
         }
+        console.log('no');
       });
       $('li').each(function() {
         if($(this).text() === "Q-" + a) {
@@ -90,6 +93,7 @@
           delay(3500).
           fadeIn(900);
         }
+        console.log('no');
       });
       $('li').each(function() {
         if($(this).text() === "K-" + a) {
@@ -98,9 +102,11 @@
           delay(4500).
           fadeIn(900);
         }
+        console.log('no');
       });
     };
-    //Insertion sort and testing function
+
+    //addValue, Insertion sort, and testing function
     var test = function() {
       if($('li:eq(0)').data('name') < $('li:eq(1)').data('name')) {
         console.log("!!!It does!!!");
@@ -115,16 +121,15 @@
         var j = i - 1;
         for(; j >= 0 && $('li:eq(' + j + ')').data('name') > $temp.data('name'); --j) {
           $('li:eq(' + (j + 1)+ ')').
-            fadeOut(50).
+            hide().
             detach().
             insertBefore($('li:eq(' + j + ')')).
-            fadeIn(300);
-          console.log('yes');
+            fadeIn(400);
+
         }
+        console.log('yes!!!');
       }
     };
-
-
     //Assigns meta-value so I can sort through them efficiently
     var addValue = function() {
       for(var i = 0; i <= $('.card').length; i++) {

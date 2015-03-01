@@ -1,3 +1,5 @@
+http://mcgough.github.io/deckofcards/
+
 Thanks to Brooks Riggio for Deck and Card constructors and the shuffle function as well.
 
 The page is up on gh-pages, but for some reason the Skeleton, my boilerplate, isn't being recognized. So, it's not a great representation.
