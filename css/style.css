@@ -39,6 +39,8 @@ li {
 }
 #shuffle,
 #sort {
+  font-family: 'Cinzel', serif;
+  font-weight: 3em;
   background-color: red;
   color: white;
   box-shadow: 0 0 15px white;
