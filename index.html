@@ -114,7 +114,11 @@
         var $temp = $('li:eq(' + i + ')');
         var j = i - 1;
         for(; j >= 0 && $('li:eq(' + j + ')').data('name') > $temp.data('name'); --j) {
-          $('li:eq(' + (j + 1)+ ')').fadeOut(50).detach().insertBefore($('li:eq(' + j + ')')).fadeIn(300);
+          $('li:eq(' + (j + 1)+ ')').
+            fadeOut(50).
+            detach().
+            insertBefore($('li:eq(' + j + ')')).
+            fadeIn(300);
           console.log('yes');
         }
       }
