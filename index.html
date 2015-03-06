@@ -5,6 +5,7 @@
   <link type='text/css' rel='stylesheet' href='css/Skeleton/css/skeleton.css'>
   <link href='http://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
   <link type='text/css' rel='stylesheet' href='css/style.css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <header>
@@ -118,13 +119,13 @@
       var length = $('li').length;
       for(var i = 1; i <= length; i++) {
         var $temp = $('li:eq(' + i + ')');
-        var j = i - 1;
-        for(; j >= 0 && $('li:eq(' + j + ')').data('name') > $temp.data('name'); --j) {
+        for(var j = i -1; j >= 0 && $('li:eq(' + j + ')').data('name') > $temp.data('name'); --j) {
           $('li:eq(' + (j + 1)+ ')').
             hide().
             detach().
             insertBefore($('li:eq(' + j + ')')).
-            fadeIn(400);
+            fadeIn(1000).
+            delay(500);
 
         }
         console.log('yes!!!');
